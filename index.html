@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-bear="qotbi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الدببة الثلاثة | Three Bears Drinks</title>
+  <meta name="description" content="عالم الدببة الثلاثة — اكتشف مشروباتك واطلب عبر واتساب أو ماسنجر." />
+  <meta property="og:title" content="الدببة الثلاثة | Three Bears Drinks" />
+  <meta property="og:description" content="ثلاثة دببة. ثلاث شخصيات. مشروبك." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/og.png" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/themes/qotbi.css" />
+  <link rel="stylesheet" href="css/themes/panda.css" />
+  <link rel="stylesheet" href="css/themes/shihab.css" />
+  <link rel="stylesheet" href="css/features/hero.css" />
+  <link rel="stylesheet" href="css/features/bears.css" />
+  <link rel="stylesheet" href="css/features/menu.css" />
+  <link rel="stylesheet" href="css/features/product.css" />
+  <link rel="stylesheet" href="css/features/cart.css" />
+  <link rel="stylesheet" href="css/features/order.css" />
+  <link rel="stylesheet" href="css/features/quiz.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">تخطي إلى المحتوى</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="الدببة الثلاثة">
+        <img src="assets/images/logo.svg" alt="" width="40" height="40" />
+        <span class="brand-name" data-i18n="brand">الدببة الثلاثة</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="القائمة الرئيسية">
+        <a href="#bears" data-i18n="nav.bears">الدببة</a>
+        <a href="#worlds" data-i18n="nav.worlds">عوالم الدببة</a>
+        <a href="#menu" data-i18n="nav.menu">المنيو</a>
+        <a href="#quiz" data-i18n="nav.quiz">أي دب أنت؟</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="btn-ghost lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span id="lang-label">EN</span>
+        </button>
+        <button type="button" class="btn-cart" id="cart-open" aria-label="السلة" aria-haspopup="dialog">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cart-count" hidden>0</span>
+        </button>
+        <button type="button" class="btn-burger" id="nav-toggle" aria-label="القائمة" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/images/hero-bg.svg" alt="" class="hero-bg" fetchpriority="high" />
+      </div>
+      <div class="container hero-inner">
+        <p class="hero-kicker" data-i18n="hero.kicker">عالم الدببة الثلاثة</p>
+        <h1 class="hero-title" data-i18n="hero.title">ثلاثة دببة. ثلاث شخصيات. مشروبك.</h1>
+        <p class="hero-sub" data-i18n="hero.sub">اكتشف أي دب يناسب مزاجك اليوم، واستعرض مشروباته واطلبها فورًا.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#menu" data-i18n="hero.ctaPrimary">استعرض المنيو</a>
+          <a class="btn btn-outline" href="#worlds" data-i18n="hero.ctaSecondary">اطلب الآن</a>
+        </div>
+      </div>
+      <div class="hero-wave" aria-hidden="true"></div>
+    </section>
+
+    <section class="section bears" id="bears">
+      <div class="container">
+        <header class="section-head">
+          <h2 data-i18n="bears.title">تعرّف على الدببة</h2>
+          <p data-i18n="bears.sub">لكل دب شخصيته وعالم مشروباته.</p>
+        </header>
+        <div class="bears-grid" id="bears-grid"></div>
+      </div>
+    </section>
+
+    <section class="section worlds" id="worlds">
+      <div class="container">
+        <header class="section-head">
+          <h2 data-i18n="worlds.title">عوالم الدببة</h2>
+          <p data-i18n="worlds.sub">اختر دبًا لتدخل عالمه وتشاهد مشروباته.</p>
+        </header>
+        <div class="world-switch" id="world-switch" role="tablist" aria-label="اختيار الدب"></div>
+        <div class="world-panel" id="world-panel" role="tabpanel"></div>
+      </div>
+    </section>
+
+    <section class="section menu" id="menu">
+      <div class="container">
+        <header class="section-head">
+          <h2 data-i18n="menu.title">المنيو الكامل</h2>
+          <p data-i18n="menu.sub">كل المشروبات في مكان واحد.</p>
+        </header>
+        <div class="menu-filters" id="menu-filters" role="toolbar" aria-label="تصفية حسب الدب"></div>
+        <div class="menu-grid" id="menu-grid"></div>
+        <p class="menu-empty" id="menu-empty" hidden data-i18n="menu.empty">لا توجد مشروبات في هذا القسم بعد.</p>
+      </div>
+    </section>
+
+    <section class="section quiz" id="quiz">
+      <div class="container quiz-container">
+        <header class="section-head">
+          <h2 data-i18n="quiz.title">أي دب أنت؟</h2>
+          <p data-i18n="quiz.sub">أجب عن أسئلة قصيرة لنرشّح لك الدب المناسب.</p>
+        </header>
+        <div id="quiz-root"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/images/logo.svg" alt="" width="36" height="36" />
+        <span data-i18n="brand">الدببة الثلاثة</span>
+      </div>
+      <p class="footer-meta">
+        <span data-i18n="footer.hours">الدوام: <BUSINESS_TO_PROVIDE></span>
+        <span data-i18n="footer.address">العنوان: <BUSINESS_TO_PROVIDE></span>
+      </p>
+      <div class="footer-social" id="footer-social"></div>
+      <p class="footer-copy" data-i18n="footer.copy">© الدببة الثلاثة</p>
+    </div>
+  </footer>
+
+  <!-- Product details modal -->
+  <div class="modal" id="product-modal" hidden role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" id="product-modal-panel"></div>
+  </div>
+
+  <!-- Cart drawer -->
+  <div class="drawer" id="cart-drawer" hidden role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="drawer-backdrop" data-close></div>
+    <aside class="drawer-panel">
+      <header class="drawer-head">
+        <h2 id="cart-title" data-i18n="cart.title">سلة الطلب</h2>
+        <button type="button" class="icon-btn" data-close aria-label="إغلاق">✕</button>
+      </header>
+      <div class="drawer-body" id="cart-body"></div>
+      <footer class="drawer-foot" id="cart-foot"></footer>
+    </aside>
+  </div>
+
+  <!-- Order modal -->
+  <div class="modal" id="order-modal" hidden role="dialog" aria-modal="true" aria-labelledby="order-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel order-panel">
+      <header class="drawer-head">
+        <h2 id="order-title" data-i18n="order.title">إتمام الطلب</h2>
+        <button type="button" class="icon-btn" data-close aria-label="إغلاق">✕</button>
+      </header>
+      <div id="order-root"></div>
+    </div>
+  </div>
+
+  <!-- Mobile floating cart bar -->
+  <button type="button" class="cart-bar" id="cart-bar" hidden>
+    <span class="cart-bar-count" id="cart-bar-count">0</span>
+    <span data-i18n="cart.view">عرض السلة</span>
+    <span class="cart-bar-total" id="cart-bar-total"></span>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

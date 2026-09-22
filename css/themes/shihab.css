@@ -1,0 +1,24 @@
+html[data-bear="shihab"] {
+  --accent: #ff9a4d;
+  --accent-contrast: #3a1c05;
+  --accent-soft: rgba(255, 154, 77, 0.25);
+  --world-bg: #fff3e6;
+  --world-surface: #ffffff;
+  --world-ink: #3a2413;
+}
+
+html[data-bear="shihab"] .world-panel {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 154, 77, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(236, 117, 44, 0.25), transparent 40%),
+    linear-gradient(160deg, #fff8f0, var(--world-bg));
+}
+
+html[data-bear="shihab"] .world-panel .world-anim {
+  animation: shihab-bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes shihab-bounce {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1.5deg); }
+}

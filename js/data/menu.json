@@ -1,0 +1,133 @@
+{
+  "bears": [
+    {
+      "id": "qotbi",
+      "slug": "qotbi",
+      "name": { "ar": "قطبي", "en": "Qotbi" },
+      "tagline": { "ar": "بارد. منعش. فريد.", "en": "Cold. Refreshing. Unique." },
+      "description": {
+        "ar": "عالم الجليد والبرودة — مشروبات باردة ومنعشة لمحبي الإحساس المنعش.",
+        "en": "The ice world — cold, refreshing drinks for a crisp kick."
+      },
+      "theme": "qotbi",
+      "heroImage": "assets/images/bears/qotbi.svg",
+      "emoji": "🐻‍❄️"
+    },
+    {
+      "id": "panda",
+      "slug": "panda",
+      "name": { "ar": "باندا", "en": "Panda" },
+      "tagline": { "ar": "هادئ. دافئ. أنيق.", "en": "Calm. Cozy. Stylish." },
+      "description": {
+        "ar": "عالم هادئ وأنيق — مشروبات ناعمة ودافئة بألوان ترابية.",
+        "en": "A calm, stylish world — soft warm drinks in earthy tones."
+      },
+      "theme": "panda",
+      "heroImage": "assets/images/bears/panda.svg",
+      "emoji": "🐼"
+    },
+    {
+      "id": "shihab",
+      "slug": "shihab",
+      "name": { "ar": "شهاب", "en": "Shihab" },
+      "tagline": { "ar": "دافئ. نشيط. مرح.", "en": "Warm. Energetic. Playful." },
+      "description": {
+        "ar": "عالم مليء بالطاقة — مشروبات دافئة وحماسية لعشاق المرح.",
+        "en": "A world full of energy — warm, lively drinks for the playful."
+      },
+      "theme": "shihab",
+      "heroImage": "assets/images/bears/shihab.svg",
+      "emoji": "🔥"
+    }
+  ],
+  "categories": [
+    { "id": "signature", "name": { "ar": "مشروبات مميزة", "en": "Signature" } },
+    { "id": "hot", "name": { "ar": "ساخن", "en": "Hot" } },
+    { "id": "cold", "name": { "ar": "بارد", "en": "Cold" } },
+    { "id": "fresh", "name": { "ar": "طازج", "en": "Fresh" } }
+  ],
+  "products": [
+    {
+      "id": "qotbi-1",
+      "bearId": "qotbi",
+      "categoryId": "cold",
+      "name": { "ar": "<TODO: اسم المنتج>", "en": "<TODO: product name>" },
+      "description": { "ar": "<TODO: وصف قصير للمنتج>", "en": "<TODO: short description>" },
+      "price": null,
+      "image": "assets/images/products/qotbi-1.svg",
+      "active": true,
+      "placeholder": true,
+      "sortOrder": 1,
+      "options": [
+        { "id": "size-m", "name": { "ar": "حجم وسط", "en": "Medium" }, "priceDelta": 0, "active": true },
+        { "id": "size-l", "name": { "ar": "حجم كبير", "en": "Large" }, "priceDelta": null, "active": true, "placeholder": true }
+      ]
+    },
+    {
+      "id": "qotbi-2",
+      "bearId": "qotbi",
+      "categoryId": "fresh",
+      "name": { "ar": "<TODO: اسم المنتج>", "en": "<TODO: product name>" },
+      "description": { "ar": "<TODO: وصف قصير للمنتج>", "en": "<TODO: short description>" },
+      "price": null,
+      "image": "assets/images/products/qotbi-2.svg",
+      "active": true,
+      "placeholder": true,
+      "sortOrder": 2,
+      "options": []
+    },
+    {
+      "id": "panda-1",
+      "bearId": "panda",
+      "categoryId": "hot",
+      "name": { "ar": "<TODO: اسم المنتج>", "en": "<TODO: product name>" },
+      "description": { "ar": "<TODO: وصف قصير للمنتج>", "en": "<TODO: short description>" },
+      "price": null,
+      "image": "assets/images/products/panda-1.svg",
+      "active": true,
+      "placeholder": true,
+      "sortOrder": 1,
+      "options": []
+    },
+    {
+      "id": "panda-2",
+      "bearId": "panda",
+      "categoryId": "signature",
+      "name": { "ar": "<TODO: اسم المنتج>", "en": "<TODO: product name>" },
+      "description": { "ar": "<TODO: وصف قصير للمنتج>", "en": "<TODO: short description>" },
+      "price": null,
+      "image": "assets/images/products/panda-2.svg",
+      "active": true,
+      "placeholder": true,
+      "sortOrder": 2,
+      "options": []
+    },
+    {
+      "id": "shihab-1",
+      "bearId": "shihab",
+      "categoryId": "signature",
+      "name": { "ar": "<TODO: اسم المنتج>", "en": "<TODO: product name>" },
+      "description": { "ar": "<TODO: وصف قصير للمنتج>", "en": "<TODO: short description>" },
+      "price": null,
+      "image": "assets/images/products/shihab-1.svg",
+      "active": true,
+      "placeholder": true,
+      "sortOrder": 1,
+      "options": []
+    },
+    {
+      "id": "shihab-2",
+      "bearId": "shihab",
+      "categoryId": "hot",
+      "name": { "ar": "<TODO: اسم المنتج>", "en": "<TODO: product name>" },
+      "description": { "ar": "<TODO: وصف قصير للمنتج>", "en": "<TODO: short description>" },
+      "price": null,
+      "image": "assets/images/products/shihab-2.svg",
+      "active": true,
+      "placeholder": true,
+      "sortOrder": 2,
+      "options": []
+    }
+  ],
+  "_instructions": "ADD/EDIT/DELETE: products[] is the only array you need to change for menu items. Each product: id (unique), bearId (qotbi|panda|shihab), categoryId (from categories[]), name/description {ar,en}, price (number, EGP — replace null), image (path under assets/images/products/), active (true/false), placeholder (set false when real), sortOrder, options[] ({id,name{ar,en},priceDelta,active})."
+}

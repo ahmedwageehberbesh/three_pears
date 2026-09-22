@@ -1,0 +1,78 @@
+.hero {
+  position: relative;
+  min-height: clamp(480px, 78dvh, 720px);
+  display: grid;
+  align-items: center;
+  color: var(--white);
+  overflow: hidden;
+  background: linear-gradient(155deg, var(--brown-900), var(--brown-700));
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--space-7);
+  max-width: 720px;
+}
+
+.hero-kicker {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-4);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  margin-bottom: var(--space-4);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  opacity: 0.9;
+  max-width: 34em;
+  margin-bottom: var(--space-5);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: -2px;
+  inset-inline: 0;
+  height: 60px;
+  background: var(--cream);
+  clip-path: polygon(0 60%, 12% 45%, 28% 55%, 45% 35%, 62% 50%, 78% 30%, 92% 45%, 100% 40%, 100% 100%, 0 100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-bg {
+    animation: hero-kenburns 18s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes hero-kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}

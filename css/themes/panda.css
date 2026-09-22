@@ -1,0 +1,30 @@
+html[data-bear="panda"] {
+  --accent: #e8e4dc;
+  --accent-contrast: #17140f;
+  --accent-soft: rgba(232, 228, 220, 0.35);
+  --world-bg: #1c1a17;
+  --world-surface: #262320;
+  --world-ink: #f3efe7;
+}
+
+html[data-bear="panda"] .world-panel {
+  background:
+    radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.08), transparent 40%),
+    radial-gradient(circle at 15% 85%, rgba(194, 160, 120, 0.15), transparent 45%),
+    linear-gradient(160deg, #221f1b, var(--world-bg));
+  color: var(--world-ink);
+}
+
+html[data-bear="panda"] .world-panel .section-head h2,
+html[data-bear="panda"] .world-panel h3 {
+  color: var(--world-ink);
+}
+
+html[data-bear="panda"] .world-panel .world-anim {
+  animation: panda-drift 7s ease-in-out infinite;
+}
+
+@keyframes panda-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -6px); }
+}
