@@ -44,6 +44,7 @@ export function renderBears() {
 }
 
 function goToBear(bear) {
+  window.dispatchEvent(new CustomEvent("world:decided"));
   document.documentElement.dataset.bear = bear.theme;
   document.getElementById("worlds")?.scrollIntoView({ behavior: "smooth" });
   window.dispatchEvent(new CustomEvent("bear:select", { detail: bear.id }));
@@ -64,21 +65,27 @@ export function setupWorlds() {
         "aria-selected": index === 0 ? "true" : "false",
         "aria-controls": "world-panel",
         text: localized(bear.name),
-        onclick: () => selectBear(bear.id)
+        onclick: () => {
+          window.dispatchEvent(new CustomEvent("world:decided"));
+          selectBear(bear.id);
+        }
       }
     );
     switcher.append(tab);
   });
 
   window.addEventListener("bear:select", (e) => selectBear(e.detail));
-  selectBear(data.bears[0]?.id);
+  selectBear(data.bears[0]?.id, { syncMenu: false });
 }
 
-export function selectBear(bearId) {
+export function selectBear(bearId, { syncMenu = true } = {}) {
   const bear = data.bears.find((b) => b.id === bearId) || data.bears[0];
   if (!bear) return;
 
   document.documentElement.dataset.bear = bear.theme;
+  if (syncMenu) {
+    window.dispatchEvent(new CustomEvent("menu:filter", { detail: bear.id }));
+  }
 
   $$(".world-tab").forEach((tab) => {
     tab.setAttribute("aria-selected", String(tab.id === `world-tab-${bear.id}`));

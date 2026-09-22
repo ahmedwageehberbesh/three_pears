@@ -103,3 +103,8 @@ export function setOrderNotes(value) {
   orderNotes = value;
   persist();
 }
+
+export function setOrderNotesQuiet(value) {
+  orderNotes = value;
+  localStorage.setItem(NOTES_KEY, JSON.stringify(orderNotes));
+}

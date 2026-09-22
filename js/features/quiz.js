@@ -131,6 +131,7 @@ function renderResult() {
             class: "btn btn-primary",
             text: t("quiz.goWorld"),
             onclick: () => {
+              window.dispatchEvent(new CustomEvent("world:decided"));
               document.documentElement.dataset.bear = bear.theme;
               window.dispatchEvent(new CustomEvent("bear:select", { detail: bear.id }));
               document.getElementById("worlds")?.scrollIntoView({ behavior: "smooth" });

@@ -1,10 +1,49 @@
 ﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
-  <rect width="400" height="300" fill="#f7f1e6"/>
-  <circle cx="200" cy="140" r="90" fill="#3d3833" opacity="0.25"/>
-  <g fill="none" stroke="#3d3833" stroke-width="6" stroke-linecap="round">
-    <path d="M170 90h60l-8 110a22 22 0 0 1-22 20h0a22 22 0 0 1-22-20z"/>
-    <path d="M176 130h48"/>
-    <path d="M200 58v22"/>
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fdf6e9"/>
+      <stop offset="100%" stop-color="#f0e6cf"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f9f1dd"/>
+      <stop offset="100%" stop-color="#e6d7b5"/>
+    </linearGradient>
+    <linearGradient id="milk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5e6b8"/>
+      <stop offset="100%" stop-color="#ffe9a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg1)"/>
+  <rect x="120" y="70" width="160" height="190" rx="22" fill="url(#cup)" stroke="#d4b98a" stroke-width="3"/>
+  <rect x="120" y="70" width="160" height="60" rx="22" fill="url(#milk)"/>
+  <ellipse cx="233" cy="83" rx="26" ry="15" fill="#7fd27f" opacity="0.85"/>
+  <path d="M238 62q4 -14 2 -26" stroke="#5b954f" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M182 84q10 -22 24 -18" stroke="#8a5a2b" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <ellipse cx="182" cy="92" rx="11" ry="18" fill="#8a5a2b"/>
+  <ellipse cx="134" cy="76" rx="14" ry="9" fill="#5b954f"/>
+  <g stroke="#4a8a3f" stroke-width="3" stroke-linecap="round">
+    <path d="M134 64v-14"/>
+    <path d="M124 68l8-12"/>
+    <path d="M144 68l-8-12"/>
   </g>
-  <text x="200" y="262" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="20" font-weight="700" fill="#a08000">panda-1 — TODO photo</text>
+  <g fill="#c98d5a">
+    <circle cx="146" cy="132" r="7"/>
+    <circle cx="160" cy="120" r="6"/>
+    <circle cx="174" cy="132" r="7"/>
+    <circle cx="188" cy="120" r="6"/>
+    <circle cx="202" cy="132" r="7"/>
+    <circle cx="216" cy="120" r="6"/>
+    <circle cx="230" cy="132" r="7"/>
+    <circle cx="244" cy="122" r="6"/>
+    <circle cx="258" cy="134" r="7"/>
+    <circle cx="150" cy="150" r="6"/>
+    <circle cx="166" cy="146" r="7"/>
+    <circle cx="182" cy="150" r="6"/>
+    <circle cx="198" cy="146" r="7"/>
+    <circle cx="214" cy="150" r="6"/>
+    <circle cx="230" cy="146" r="7"/>
+    <circle cx="246" cy="150" r="6"/>
+  </g>
+  <path d="M108 52q60 -30 132 0" stroke="#8a5a2b" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <text x="200" y="286" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="17" font-weight="800" fill="#8a5a2b">أفوكادو موز لبن بوبا</text>
 </svg>

@@ -1,5 +1,5 @@
 .bears {
-  background: var(--cream);
+  background: transparent;
 }
 
 .bears-grid {
@@ -69,7 +69,7 @@
 
 /* Worlds */
 .worlds {
-  background: linear-gradient(180deg, var(--cream), var(--cream-2));
+  background: transparent;
 }
 
 .world-switch {

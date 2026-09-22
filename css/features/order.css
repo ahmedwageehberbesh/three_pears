@@ -2,6 +2,27 @@
   width: min(600px, 100%);
 }
 
+.order-preview {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.order-preview-box {
+  margin: 0;
+  background: var(--brown-900);
+  color: var(--cream);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  direction: inherit;
+  text-align: start;
+  max-height: 200px;
+  overflow: auto;
+}
+
 .order-form {
   padding: var(--space-5);
   display: grid;
@@ -35,40 +56,6 @@
   gap: var(--space-4);
 }
 
-.order-channels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
-}
-
-.channel-btn {
-  display: grid;
-  place-items: center;
-  gap: 6px;
-  border: 2px solid rgba(0, 0, 0, 0.12);
-  background: var(--white);
-  border-radius: var(--radius-md);
-  padding: var(--space-4) var(--space-2);
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.2s var(--ease);
-}
-
-.channel-btn svg {
-  width: 28px;
-  height: 28px;
-}
-
-.channel-btn:hover,
-.channel-btn.is-selected {
-  border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, white);
-  transform: translateY(-2px);
-}
-
-.channel-btn[data-channel="whatsapp"] svg { fill: #25d366; stroke: #25d366; }
-.channel-btn[data-channel="messenger"] svg { fill: #0084ff; stroke: #0084ff; }
-
 .order-note {
   font-size: 0.82rem;
   color: var(--brown-500);
@@ -85,10 +72,4 @@
   font-size: 0.82rem;
   font-weight: 700;
   margin: 0;
-}
-
-@media (max-width: 480px) {
-  .order-channels {
-    grid-template-columns: 1fr;
-  }
 }

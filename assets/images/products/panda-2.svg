@@ -1,10 +1,48 @@
 ﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
-  <rect width="400" height="300" fill="#f7f1e6"/>
-  <circle cx="200" cy="140" r="90" fill="#8b7355" opacity="0.25"/>
-  <g fill="none" stroke="#8b7355" stroke-width="6" stroke-linecap="round">
-    <path d="M170 90h60l-8 110a22 22 0 0 1-22 20h0a22 22 0 0 1-22-20z"/>
-    <path d="M176 130h48"/>
-    <path d="M200 58v22"/>
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffeef5"/>
+      <stop offset="100%" stop-color="#f7dbe8"/>
+    </linearGradient>
+    <linearGradient id="cup2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff5f0"/>
+      <stop offset="100%" stop-color="#f0dcd2"/>
+    </linearGradient>
+    <linearGradient id="milk2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd9e8"/>
+      <stop offset="100%" stop-color="#ffb3c9"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg2)"/>
+  <rect x="120" y="70" width="160" height="190" rx="22" fill="url(#cup2)" stroke="#e0b8aa" stroke-width="3"/>
+  <rect x="120" y="70" width="160" height="58" rx="22" fill="url(#milk2)"/>
+  <ellipse cx="232" cy="80" rx="24" ry="13" fill="#ff6b81" opacity="0.75"/>
+  <path d="M238 58q4 -14 1 -26" stroke="#3f8f4e" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M176 86q8 -8 16 0q8 -8 16 0q6 -6 12 0" stroke="#ffb84d" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="138" cy="82" rx="12" ry="16" fill="#e84393"/>
+  <path d="M136 62v-16M128 68l6-12M148 68l-6-12" stroke="#a52a63" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <g stroke="#e84393" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M146 106q10 4 8 14"/>
+    <path d="M138 114q10 0 8 10"/>
   </g>
-  <text x="200" y="262" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="20" font-weight="700" fill="#a08000">panda-2 — TODO photo</text>
+  <g fill="#c98d5a">
+    <circle cx="148" cy="134" r="7"/>
+    <circle cx="162" cy="122" r="6"/>
+    <circle cx="176" cy="134" r="7"/>
+    <circle cx="190" cy="122" r="6"/>
+    <circle cx="204" cy="134" r="7"/>
+    <circle cx="218" cy="122" r="6"/>
+    <circle cx="232" cy="134" r="7"/>
+    <circle cx="246" cy="124" r="6"/>
+    <circle cx="260" cy="136" r="7"/>
+    <circle cx="152" cy="152" r="6"/>
+    <circle cx="168" cy="148" r="7"/>
+    <circle cx="184" cy="152" r="6"/>
+    <circle cx="200" cy="148" r="7"/>
+    <circle cx="216" cy="152" r="6"/>
+    <circle cx="232" cy="148" r="7"/>
+    <circle cx="248" cy="152" r="6"/>
+  </g>
+  <path d="M106 54q66 -34 136 0" stroke="#ffb84d" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <text x="200" y="286" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="17" font-weight="800" fill="#c04877">دراجون فروت مانجا لبن</text>
 </svg>

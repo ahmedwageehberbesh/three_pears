@@ -5,6 +5,8 @@ html[data-bear="panda"] {
   --world-bg: #1c1a17;
   --world-surface: #262320;
   --world-ink: #f3efe7;
+  --scene-bg: url("../../assets/images/scenes/panda.svg");
+  --theme-tint: #e4eddf;
 }
 
 html[data-bear="panda"] .world-panel {
@@ -27,4 +29,17 @@ html[data-bear="panda"] .world-panel .world-anim {
 @keyframes panda-drift {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(6px, -6px); }
+}
+
+html[data-bear="panda"] .site-header,
+html[data-bear="panda"] .site-footer {
+  background: #1a2b1d;
+}
+
+html[data-bear="panda"] .btn-primary {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+html[data-bear="panda"] .hero {
+  background: linear-gradient(155deg, #16241a, #2c4a30);
 }

@@ -5,6 +5,8 @@ html[data-bear="shihab"] {
   --world-bg: #fff3e6;
   --world-surface: #ffffff;
   --world-ink: #3a2413;
+  --scene-bg: url("../../assets/images/scenes/shihab.svg");
+  --theme-tint: #ffe9d2;
 }
 
 html[data-bear="shihab"] .world-panel {
@@ -21,4 +23,17 @@ html[data-bear="shihab"] .world-panel .world-anim {
 @keyframes shihab-bounce {
   0%, 100% { transform: translateY(0) rotate(-1deg); }
   50% { transform: translateY(-10px) rotate(1.5deg); }
+}
+
+html[data-bear="shihab"] .site-header,
+html[data-bear="shihab"] .site-footer {
+  background: #5a2d10;
+}
+
+html[data-bear="shihab"] .btn-primary {
+  box-shadow: 0 8px 20px rgba(200, 92, 20, 0.35);
+}
+
+html[data-bear="shihab"] .hero {
+  background: linear-gradient(155deg, #4a230d, #8a4518);
 }

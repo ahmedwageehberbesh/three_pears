@@ -5,6 +5,8 @@ html[data-bear="qotbi"] {
   --world-bg: #eaf7fd;
   --world-surface: #ffffff;
   --world-ink: #0f2a3a;
+  --scene-bg: url("../../assets/images/scenes/qotbi.svg");
+  --theme-tint: #dff1fb;
 }
 
 html[data-bear="qotbi"] .world-panel {
@@ -26,4 +28,17 @@ html[data-bear="qotbi"] .world-panel .world-anim {
 @keyframes qotbi-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+html[data-bear="qotbi"] .site-header,
+html[data-bear="qotbi"] .site-footer {
+  background: #0b3f57;
+}
+
+html[data-bear="qotbi"] .btn-primary {
+  box-shadow: 0 8px 20px rgba(14, 116, 144, 0.35);
+}
+
+html[data-bear="qotbi"] .hero {
+  background: linear-gradient(155deg, #0b3f57, #155e7a);
 }

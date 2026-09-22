@@ -1,6 +1,6 @@
 import { $, el, formatPrice, imgFallback } from "../lib/dom.js";
 import { t, localized, getLang } from "../data/i18n.js";
-import { subscribe, getSnapshot, updateQty, removeItem, setOrderNotes } from "../lib/store.js";
+import { subscribe, getSnapshot, updateQty, removeItem, setOrderNotesQuiet } from "../lib/store.js";
 
 let lastFocused = null;
 
@@ -147,7 +147,7 @@ function renderDrawer(state) {
       id: "cart-notes",
       rows: "2",
       placeholder: t("cart.orderNotePlaceholder"),
-      oninput: (e) => setOrderNotes(e.target.value)
+      oninput: (e) => setOrderNotesQuiet(e.target.value)
     })
   ]);
   notesField.querySelector("textarea").value = state.orderNotes || "";

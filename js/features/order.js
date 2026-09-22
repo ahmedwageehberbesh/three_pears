@@ -1,10 +1,9 @@
 import { $, el, formatPrice, toast } from "../lib/dom.js";
 import { t, localized, getLang } from "../data/i18n.js";
 import { config, isProvided } from "../data/config.js";
-import { getSnapshot } from "../lib/store.js";
+import { getSnapshot, setOrderNotes } from "../lib/store.js";
 
 let data;
-let selectedChannel = "whatsapp";
 let lastFocused = null;
 
 export function initOrder(dataset) {
@@ -26,6 +25,14 @@ function currency() {
   return getLang() === "en" ? config.currency.en : config.currency.ar;
 }
 
+function toAsciiDigits(value) {
+  return String(value || "")
+    .replace(/[٠-٩]/g, (c) => c.codePointAt(0) - 0x0660)
+    .replace(/[۰-۹]/g, (c) => c.codePointAt(0) - 0x06f0)
+    .replace(/[０-９]/g, (c) => c.codePointAt(0) - 0xff10)
+    .replace(/[^\d]/g, "");
+}
+
 function open() {
   const state = getSnapshot();
   if (!state.items.length) {
@@ -34,7 +41,6 @@ function open() {
   }
 
   lastFocused = document.activeElement;
-  selectedChannel = isProvided(config.whatsappNumber) ? "whatsapp" : "messenger";
 
   const root = $("#order-root");
   root.innerHTML = "";
@@ -78,64 +84,65 @@ function buildForm(state) {
 
   const fields = el("div", { class: "order-fields" }, [
     field("order-name", "order.name", "text", true),
-    field("order-phone", "order.phone", "tel", true, "01012345678"),
-    field("order-address", "order.address", "text", false)
+    field("order-phone", "order.phone", "tel", true, ""),
+    field("order-area", "order.area", "text", false, ""),
+    el("div", { class: "field" }, [
+      el("label", { for: "order-notes", text: t("order.formNotes") }),
+      el("textarea", {
+        id: "order-notes",
+        rows: "2",
+        placeholder: t("order.formNotesPlaceholder")
+      })
+    ])
   ]);
+  fields.querySelector("#order-notes").value = state.orderNotes || "";
   form.append(fields);
 
-  const channels = el("div", { class: "order-channels" }, [
-    channelButton("whatsapp", t("order.whatsapp"),
-      `<svg viewBox="0 0 24 24" stroke-width="0" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.5-.6c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 0 0 4.6 4.3c1.7.8 2.4.9 3.2.7.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>`),
-    channelButton("messenger", t("order.messenger"),
-      `<svg viewBox="0 0 24 24" stroke-width="0" aria-hidden="true"><path d="M12 2C6.3 2 2 6.2 2 11.7c0 3 1.4 5.6 3.7 7.4v3.7l3.4-1.9c.9.3 1.9.4 2.9.4 5.7 0 10-4.2 10-9.7S17.7 2 12 2zm1 12.6-2.6-2.7-5 2.7 5.5-5.8 2.6 2.7 4.9-2.7-5.4 5.8z"/></svg>`)
-  ]);
-  form.append(
-    el("div", { class: "field" }, [
-      el("span", { class: "options-title", text: t("order.channel") }),
-      channels
-    ])
-  );
-
-  if (!isProvided(config.whatsappNumber) && !isProvided(config.messengerUrl)) {
+  if (!isProvided(config.whatsappNumber)) {
     form.append(el("p", { class: "order-warning", text: t("order.unavailable") }));
   }
 
+  const preview = el("div", { class: "order-preview" }, [
+    el("span", { class: "options-title", text: t("order.preview") }),
+    el("p", { class: "order-note", text: t("order.previewHint") }),
+    el("pre", { class: "order-preview-box", id: "order-preview-box" })
+  ]);
+
   form.append(
-    el("button", { type: "submit", class: "btn-checkout", text: t("order.send") })
+    preview,
+    el("button", {
+      type: "submit",
+      class: "btn-checkout",
+      id: "order-submit",
+      text: t("order.send")
+    })
   );
 
-  syncChannelAvailability();
+  form.addEventListener("change", syncPreview);
+  form.addEventListener("input", syncPreview);
+  syncPreview();
   return form;
 }
 
-function channelButton(id, label, iconHtml) {
-  return el("button", {
-    type: "button",
-    class: `channel-btn${selectedChannel === id ? " is-selected" : ""}`,
-    dataset: { channel: id },
-    html: `${iconHtml}<span>${label}</span>`,
-    onclick: (e) => {
-      selectedChannel = id;
-      document.querySelectorAll(".channel-btn").forEach((btn) => {
-        btn.classList.toggle("is-selected", btn.dataset.channel === id);
-      });
-    }
-  });
+function currentFormState() {
+  const name = $("#order-name")?.value.trim() ?? "";
+  const phone = toAsciiDigits($("#order-phone")?.value ?? "");
+  const area = $("#order-area")?.value.trim() ?? "";
+  const notes = $("#order-notes")?.value.trim() ?? "";
+  const state = getSnapshot();
+  if (notes !== state.orderNotes) setOrderNotes(notes);
+  return { name, phone, area, state: getSnapshot() };
 }
 
-function syncChannelAvailability() {
-  const wa = document.querySelector('.channel-btn[data-channel="whatsapp"]');
-  const ms = document.querySelector('.channel-btn[data-channel="messenger"]');
-  if (wa && !isProvided(config.whatsappNumber)) {
-    wa.disabled = true;
-    wa.title = t("order.unavailable");
-    wa.style.opacity = "0.5";
+function syncPreview() {
+  const box = document.getElementById("order-preview-box");
+  if (!box) return;
+  const { name, phone, area, state } = currentFormState();
+  if (!state.items.length || !name || !phone) {
+    box.textContent = "";
+    return;
   }
-  if (ms && !isProvided(config.messengerUrl)) {
-    ms.disabled = true;
-    ms.title = t("order.unavailable");
-    ms.style.opacity = "0.5";
-  }
+  box.textContent = buildMessage({ name, phone, area, state });
 }
 
 function field(id, labelKey, type, required, placeholder = "") {
@@ -169,8 +176,14 @@ function submit(event) {
   event.preventDefault();
 
   const name = $("#order-name").value.trim();
-  const phone = $("#order-phone").value.trim();
-  const address = $("#order-address").value.trim();
+  const phone = toAsciiDigits($("#order-phone").value);
+  const phoneField = $("#order-phone");
+  if (phone !== phoneField.value.replace(/[^\d٠-٩۰-۹０-９]/g, "")) {
+    phoneField.value = phone;
+  }
+  const area = $("#order-area").value.trim();
+  const notes = $("#order-notes").value.trim();
+  if (notes !== getSnapshot().orderNotes) setOrderNotes(notes);
   const state = getSnapshot();
 
   let valid = true;
@@ -181,7 +194,7 @@ function submit(event) {
   if (!phone) {
     setError("order-phone", t("order.required"));
     valid = false;
-  } else if (!config.phonePattern.test(phone.replace(/\s+/g, ""))) {
+  } else if (!config.phonePattern.test(phone)) {
     setError("order-phone", t("order.invalidPhone"));
     valid = false;
   } else {
@@ -193,33 +206,24 @@ function submit(event) {
     return;
   }
 
-  if (selectedChannel === "whatsapp") {
-    sendWhatsApp({ name, phone, address, state });
-  } else if (selectedChannel === "messenger") {
-    sendMessenger({ name, phone, address, state });
-  } else {
-    toast(t("order.needChannel"));
-  }
+  sendWhatsApp({ name, phone, area, state });
 }
 
-function buildMessage({ name, phone, address, state }) {
+function buildMessage({ name, phone, area, state }) {
   const lines = [];
 
-  lines.push(`🐻 ${t("order.msgTitle")} — ${localized(config.businessName)}`);
+  const head = [`${t("order.msgName")}: ${name}`, `${t("order.msgPhone")}: ${phone}`];
+  if (area) head.push(`${t("order.msgArea")}: ${area}`);
+  lines.push(head.join(" | "));
+
   lines.push("");
-  lines.push(`${t("order.msgName")}: ${name}`);
-  lines.push(`${t("order.msgPhone")}: ${phone}`);
-  if (address) lines.push(`${t("order.msgAddress")}: ${address}`);
-  lines.push("");
-  lines.push(`${t("order.msgItems")}:`);
   state.items.forEach((item) => {
     const opts = item.options?.length
       ? ` (${item.options.map((opt) => localized(opt.name)).join(", ")})`
       : "";
-    const pricePart =
-      item.unitPrice == null ? "" : ` — ${formatPrice(item.unitPrice * item.qty, currency())}`;
-    lines.push(`• ${item.qty} × ${localized(item.name)}${opts}${pricePart}`);
-    if (item.notes) lines.push(`  ✎ ${item.notes}`);
+    let line = `${item.qty}× ${localized(item.name)}${opts}`;
+    if (item.notes) line += ` (${item.notes})`;
+    lines.push(`• ${line}`);
   });
   lines.push("");
   lines.push(
@@ -227,10 +231,8 @@ function buildMessage({ name, phone, address, state }) {
       state.priced ? formatPrice(state.total, currency()) : t("order.msgIncomplete")
     }`
   );
-  if (state.orderNotes) {
-    lines.push("");
-    lines.push(`${t("order.msgNotes")}: ${state.orderNotes}`);
-  }
+  const allNotes = state.orderNotes?.trim();
+  if (allNotes) lines.push(`${t("order.msgNotes")}: ${allNotes}`);
   return lines.join("\n");
 }
 
@@ -243,21 +245,5 @@ async function sendWhatsApp(payload) {
   const number = config.whatsappNumber.replace(/[^\d]/g, "");
   const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank", "noopener");
-  close();
-}
-
-async function sendMessenger(payload) {
-  if (!isProvided(config.messengerUrl)) {
-    toast(t("toast.todoConfig"));
-    return;
-  }
-  const message = buildMessage(payload);
-  try {
-    await navigator.clipboard.writeText(message);
-    toast(t("order.copied"));
-  } catch {
-    // clipboard may be unavailable — still open chat
-  }
-  window.open(config.messengerUrl, "_blank", "noopener");
   close();
 }

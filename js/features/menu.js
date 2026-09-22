@@ -80,6 +80,14 @@ export function renderMenu() {
 
     grid.append(
       el("article", { class: "product-card", dataset: { productId: product.id } }, [
+        el("div", { class: "product-body" }, [
+          el("h3", {
+            class: "product-name",
+            text: localized(product.name),
+            onclick: () => openProduct(product)
+          }),
+          el("p", { class: "product-desc", text: localized(product.description) })
+        ]),
         el(
           "div",
           {
@@ -104,25 +112,17 @@ export function renderMenu() {
                 : null
           ]
         ),
-        el("div", { class: "product-body" }, [
-          el("h3", {
-            class: "product-name",
-            text: localized(product.name),
-            onclick: () => openProduct(product)
+        el("div", { class: "product-foot" }, [
+          el("span", {
+            class: `price${priceMissing ? " price-todo" : ""}`,
+            text: priceMissing ? t("menu.priceMissing") : formatPrice(product.price, currency())
           }),
-          el("p", { class: "product-desc", text: localized(product.description) }),
-          el("div", { class: "product-foot" }, [
-            el("span", {
-              class: `price${priceMissing ? " price-todo" : ""}`,
-              text: priceMissing ? t("menu.priceMissing") : formatPrice(product.price, currency())
-            }),
-            el("button", {
-              type: "button",
-              class: "btn-add",
-              text: t("menu.add"),
-              onclick: () => openProduct(product)
-            })
-          ])
+          el("button", {
+            type: "button",
+            class: "btn-add",
+            text: t("menu.add"),
+            onclick: () => openProduct(product)
+          })
         ])
       ])
     );

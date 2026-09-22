@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a7cbb0"/>
+      <stop offset="60%" stop-color="#dcead9"/>
+      <stop offset="100%" stop-color="#f2f7ec"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c8f5a"/>
+      <stop offset="100%" stop-color="#2f5d33"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <g fill="#ffffff" opacity="0.35">
+    <circle cx="400" cy="140" r="40" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <circle cx="1100" cy="200" r="36" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <path d="M380 120q20 -70 40 0" stroke="#ffffff" stroke-width="3" fill="none"/>
+    <path d="M1080 182q18 -60 36 0" stroke="#ffffff" stroke-width="3" fill="none"/>
+  </g>
+  <g stroke="#3f7a43" stroke-width="22" stroke-linecap="round">
+    <line x1="260" y1="900" x2="250" y2="300"/>
+    <line x1="540" y1="900" x2="560" y2="260"/>
+    <line x1="820" y1="900" x2="800" y2="280"/>
+    <line x1="1100" y1="900" x2="1120" y2="300"/>
+    <line x1="1380" y1="900" x2="1370" y2="260"/>
+  </g>
+  <g fill="#6aa56d">
+    <ellipse cx="250" cy="300" rx="34" ry="120"/>
+    <ellipse cx="560" cy="270" rx="36" ry="130"/>
+    <ellipse cx="800" cy="280" rx="34" ry="125"/>
+    <ellipse cx="1120" cy="300" rx="36" ry="120"/>
+    <ellipse cx="1370" cy="270" rx="34" ry="130"/>
+  </g>
+  <g fill="#7dbd7a">
+    <ellipse cx="180" cy="360" rx="60" ry="160"/>
+    <ellipse cx="320" cy="340" rx="55" ry="150"/>
+    <ellipse cx="470" cy="360" rx="60" ry="155"/>
+    <ellipse cx="650" cy="340" rx="55" ry="150"/>
+    <ellipse cx="900" cy="360" rx="60" ry="160"/>
+    <ellipse cx="1020" cy="350" rx="55" ry="150"/>
+    <ellipse cx="1220" cy="360" rx="60" ry="155"/>
+    <ellipse cx="1460" cy="340" rx="55" ry="150"/>
+  </g>
+  <rect x="0" y="840" width="1600" height="60" fill="#2f5d33" opacity="0.7"/>
+  <g fill="none" stroke="#274e2b" stroke-width="3" opacity="0.6">
+    <path d="M300 500h40M520 480h40M780 510h40M1060 500h40M1300 490h40"/>
+  </g>
+</svg>
