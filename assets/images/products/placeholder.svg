@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#efe4d2"/>
+  <g fill="none" stroke="#c9b8a0" stroke-width="3" stroke-linecap="round">
+    <path d="M170 90h60l-8 110a22 22 0 0 1-22 20h0a22 22 0 0 1-22-20z"/>
+    <path d="M176 130h48"/>
+    <path d="M200 60v20"/>
+    <path d="M186 66l8 12M214 66l-8 12"/>
+  </g>
+  <text x="200" y="262" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="20" font-weight="700" fill="#a08000">TODO — product photo</text>
+</svg>

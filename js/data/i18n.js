@@ -73,8 +73,8 @@ const strings = {
     "quiz.restart": "إعادة الاختبار",
     "quiz.goWorld": "ادخل عالمه",
     "quiz.result": "أنت",
-    "footer.hours": "الدوام:",
-    "footer.address": "العنوان:",
+    "footer.hours": "الدوام: <BUSINESS_TO_PROVIDE>",
+    "footer.address": "العنوان: <BUSINESS_TO_PROVIDE>",
     "footer.copy": "© الدببة الثلاثة — جميع الحقوق محفوظة",
     "toast.added": "تمت الإضافة إلى السلة",
     "toast.todoConfig": "أضف رقم واتساب في js/data/config.js أولًا"
@@ -153,8 +153,8 @@ const strings = {
     "quiz.restart": "Restart",
     "quiz.goWorld": "Enter its world",
     "quiz.result": "You are",
-    "footer.hours": "Hours:",
-    "footer.address": "Address:",
+    "footer.hours": "Hours: <BUSINESS_TO_PROVIDE>",
+    "footer.address": "Address: <BUSINESS_TO_PROVIDE>",
     "footer.copy": "© Three Bears Drinks — All rights reserved",
     "toast.added": "Added to cart",
     "toast.todoConfig": "Add your WhatsApp number in js/data/config.js first"
