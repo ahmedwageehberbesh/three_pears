@@ -1,7 +1,7 @@
 import { $, el, formatPrice, toast } from "../lib/dom.js";
 import { t, localized, getLang } from "../data/i18n.js";
 import { config, isProvided } from "../data/config.js";
-import { getSnapshot, setOrderNotes } from "../lib/store.js";
+import { getSnapshot, setOrderNotes, clearCart } from "../lib/store.js";
 
 let data;
 let lastFocused = null;
@@ -245,5 +245,6 @@ async function sendWhatsApp(payload) {
   const number = config.whatsappNumber.replace(/[^\d]/g, "");
   const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank", "noopener");
+  clearCart();
   close();
 }
